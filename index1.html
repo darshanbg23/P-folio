@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
           
     <style>
         /* Reset and Base Styles */
@@ -342,6 +345,119 @@
             font-size: 48px;
             margin-bottom: 50px;
             text-align: center;
+        }
+
+        /* Modern Section Heading Styles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-heading {
+            font-family: 'Montserrat', 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 56px;
+            line-height: 1.2;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #a259fb 0%, #d896ff 50%, #a259fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            animation: gradientShift 3s ease infinite;
+            text-shadow: 0 0 30px rgba(162, 89, 251, 0.5);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #a259fb, transparent);
+            border-radius: 2px;
+            box-shadow: 0 0 15px rgba(162, 89, 251, 0.6);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #999999;
+            margin-top: 30px;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.3s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 1024px) {
+            .section-heading {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 36px;
+                letter-spacing: 1.5px;
+            }
+
+            .section-heading::after {
+                width: 80px;
+                height: 3px;
+            }
+
+            .section-subtitle {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-heading {
+                font-size: 28px;
+                letter-spacing: 1px;
+            }
+
+            .section-heading::after {
+                width: 60px;
+                height: 2px;
+            }
+
+            .section-subtitle {
+                font-size: 14px;
+            }
         }
 
         /* Projects Grid */
@@ -752,6 +868,9 @@
             margin-bottom: 25px;
             padding-bottom: 15px;
             border-bottom: 2px solid #8A2BE2;
+            background: none;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: #FFFFFF;
         }
 
         .tech-icons {
@@ -911,6 +1030,9 @@
             color: #ffffff;
             margin-bottom: 5px;
             font-size: 18px;
+            background: none;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: #FFFFFF;
         }
 
         .method-details a {
@@ -928,6 +1050,9 @@
             color: #ffffff;
             margin-bottom: 30px;
             font-size: 24px;
+            background: none;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: #FFFFFF;
         }
 
         .form-group {
@@ -1115,6 +1240,9 @@
             font-weight: 700;
             color: #FFFFFF;
             margin-bottom: 20px;
+            background: none;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: #FFFFFF;
         }
 
         .project-info p {
@@ -1281,6 +1409,9 @@
             font-weight: 700;
             color: #FFFFFF;
             margin-bottom: 10px;
+            background: none;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: #FFFFFF;
         }
 
         .certification-content .issuer {
@@ -1546,22 +1677,6 @@
             background: linear-gradient(to right, #8A2BE2, #FFFFFF, #8A2BE2);
             border-radius: 2px;
         }
-        
-        /* Gradient for all h2 headings */
-        h2 {
-            font-size: 72px; /* Adjust size as needed */
-            font-weight: 800;
-            background: linear-gradient(to right, #8A2BE2, #FFFFFF, #8A2BE2); /* Gradient background */
-            -webkit-background-clip: text; /* For Safari */
-            -webkit-text-fill-color: transparent; /* For Safari */
-            line-height: 1;
-            margin-bottom: 20px; /* Adjust margin as needed */
-            transition: all 0.3s ease;
-        }
-
-        h2:hover {
-            /* transform: scale(1.05); */ /* Removed the slight scale effect on hover */
-        }
 
         @media (prefers-reduced-motion: reduce) {
             .slide-in-left,
@@ -1797,11 +1912,9 @@
     <div class="section-divider"></div>
 
     <section id="skills">
-        <div class="section-header fade-up">
-            <h1>MY</h1>
-            <h2 class="purple-text">SKILLS</h2>
+        <div class="section-header">
+            <h2 class="section-heading">Mastering Code & Security</h2>
         </div>
-        <!-- <p class="section-subtitle fade-up">Here's what I typically work with.</p> -->
         
         <div class="tech-grid fade-up">
             <div class="tech-category">
@@ -1973,9 +2086,8 @@
     <div class="section-divider"></div>
 
     <section id="projects">
-        <div class="section-header fade-up">
-            <h1>RECENT</h1>
-            <h2 class="purple-text">PROJECTS</h2>
+        <div class="section-header">
+            <h2 class="section-heading">Innovations & Creations</h2>
         </div>
         
         <div class="projects-grid">
@@ -2041,9 +2153,8 @@
     <div class="section-divider"></div>
 
     <section id="certifications">
-        <div class="section-header fade-up">
-            <h1>MY</h1>
-            <h2 class="purple-text">CERTIFICATIONS</h2>
+        <div class="section-header">
+            <h2 class="section-heading">Verified Skills & Achievements</h2>
         </div>
 
         <div class="certifications-grid">
@@ -2086,8 +2197,7 @@
 
     <section id="contact" class="section-transition">
         <div class="section-header">
-            <h1 class="animate-connect-heading">LET'S</h1>
-            <h2 class="purple-text animate-connect-heading">CONNECT</h2>
+            <h2 class="section-heading">Let's Connect</h2>
         </div>
         
         <div class="contact-container">
@@ -2186,14 +2296,14 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Stop observing once visible
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
         // Observe all relevant elements for animations
         document.querySelectorAll(
-            '.section-transition, .animate-skills-heading, .animate-projects-heading, .animate-connect-heading, .slide-in-left, .slide-in-right'
+            '.section-transition, .section-header, .animate-skills-heading, .animate-projects-heading, .animate-connect-heading, .slide-in-left, .slide-in-right'
         ).forEach(element => {
             observer.observe(element);
         });
